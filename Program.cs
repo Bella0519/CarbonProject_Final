@@ -1,4 +1,6 @@
 using CarbonProject.Models;
+using Microsoft.EntityFrameworkCore; // ✅ 新增
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,13 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+// ✅ 加入 MySQL 資料庫連線
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 36)) // ⚠️ 改成你安裝的 MySQL 版本
+    ));
 
 // ✅ 初始化 Members 連線設定
 Members.Init(builder.Configuration);

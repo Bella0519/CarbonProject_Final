@@ -79,15 +79,9 @@
     </div>
 
     <div class="table-actions">
-      <button class="btn-outline" type="button" onclick="addCustom()">＋ 新增排放項目</button>
+      <button class="btn-outline" type="button" onclick="addRecord()">＋ 新增排放項目</button>
       <button class="btn-outline" type="button" onclick="clearAll()">🗑 清空所有</button>
     </div>
-  </section>
-
-  <!-- 🌿 系統推薦（放在表格下方、圖表上方，和靜態版一致） -->
-  <section id="recommendations" class="recommend-box card-rounded card-shadow">
-    <h3>🌿 系統推薦項目</h3>
-    <ul id="recommendList"></ul>
   </section>
 
   <!-- 📊 總量與圖表 -->
@@ -111,17 +105,26 @@
   <section id="customItems"></section>
 </div>
 
-
 @section Scripts {
-    <!-- 📂 JS邏輯 -->
-    <script src="~/js/transport_factors.js" asp-append-version="true"></script>
+    <!-- ✅ 只保留主要腳本，移除重複與 transport_factors -->
     <script src="~/js/calculator.js" asp-append-version="true"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ CustosCarbon MVC Calculator Ready');
-            if (typeof initCalculator === 'function') initCalculator();
-            else if (typeof loadFactors === 'function') loadFactors();
+        document.addEventListener("DOMContentLoaded", async () => {
+            console.log("✅ CustosCarbon MVC Calculator Ready");
+
+            try {
+                // 確保資料完全載入後才啟用按鈕與互動
+                if (typeof initCalculator === "function") {
+                    await initCalculator();
+                    console.log("🌸 初始化完成，碳足跡計算器可用");
+                } else {
+                    console.error("⚠️ 找不到 initCalculator() 函式，請確認 calculator.js 是否載入正確");
+                }
+            } catch (err) {
+                console.error("❌ 初始化失敗：", err);
+            }
         });
     </script>
 }
+

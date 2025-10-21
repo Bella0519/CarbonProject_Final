@@ -52,22 +52,26 @@ header nav a:hover {
 .card-rounded {
   background: white;
   border-radius: 16px;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 6px 16px rgba(255, 143, 171, 0.25);
+  padding: 0.8rem 1.5rem; /* ✅ 上下縮小，左右保留一點空間 */
+  box-shadow: 0 4px 10px rgba(255, 143, 171, 0.15);
   border: 1px solid #ffd6e0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* ✅ 下方留白也稍微縮小 */
 }
 /* ===========================================
    🌸 5️⃣ 新版輸入區（項目搜尋、使用量、加入紀錄一列）
    ✨ 上下成對、粉紅圓角輸入框、陰影亮粉效果
 =========================================== */
 
+/* === 搜尋與使用量輸入列 === */
 .input-row {
   display: flex;
   align-items: flex-end;
   gap: 16px;
-  margin-top: 12px;
+  margin-top: 8px;       /* ✅ 原本 12px → 稍微縮小 */
+  margin-bottom: 8px;    /* ✅ 新增，讓整塊更緊湊 */
   flex-wrap: wrap;
+  padding-top: 6px;      /* ✅ 減少上方留白 */
+  padding-bottom: 6px;   /* ✅ 減少下方留白 */
 }
 
 /* === 左側兩組輸入欄（上下成對） === */
@@ -76,20 +80,22 @@ header nav a:hover {
   flex-direction: column;
   position: relative;
   flex: 1;
-  min-width: 260px;
+  min-width: 100px;
 }
 
 .input-group label {
   font-weight: 600;
-  color: #ff6b9c;
+  color: #333;           /* ✅ 改成黑灰色，與「項目搜尋」一致 */
   margin-bottom: 6px;
 }
+
 /* === 使用量輸入 + 單位提示 === */
 .usage-wrapper {
   display: flex;
   align-items: center;
   gap: 6px;
 }
+
 /* === 使用量欄位水平對齊修正 === */
 .usage-col {
   display: flex;
@@ -100,11 +106,11 @@ header nav a:hover {
 .usage-col label {
   margin: 0;
   font-weight: 600;
-  color: #ff6b9c;
+  color: #333;           /* ✅ 統一顏色 */
   white-space: nowrap;
 }
 
-
+/* === 單位提示文字 === */
 .unit-hint {
   color: #ff6b9c;
   font-weight: 600;
@@ -131,30 +137,32 @@ header nav a:hover {
   outline: none;
 }
 
-/* === 一鍵加入按鈕 === */
-.input-group.align-end {
-  flex: 0 0 auto;
-  align-self: flex-end;
-}
-
+/* === 一鍵加入按鈕（粉紅圓弧亮粉版） === */
 #btnAdd {
   height: 44px;
-  background: #ff8fab;
+  background: linear-gradient(135deg, #ff8fab, #ffb6c1); /* 柔粉漸層 */
   color: white;
   border: none;
-  border-radius: 10px;
-  padding: 0 20px;
+  border-radius: 25px; /* 改成圓弧形 */
+  padding: 0 24px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(255, 105, 180, 0.25); /* 柔光陰影 */
 }
 
 #btnAdd:hover {
-  background: #ff6b9c;
+  background: linear-gradient(135deg, #ff6f91, #ffa6c9); /* hover 更亮粉 */
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(255, 107, 156, 0.35);
+  box-shadow: 0 4px 10px rgba(255, 160, 176, 0.6);
+  filter: brightness(1.05);
 }
 
+#btnAdd:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(255, 182, 193, 0.4);
+}
 
 /* ===========================================
    🎀 6️⃣ 按鈕（粉色按鈕 + 邊框按鈕）
@@ -171,23 +179,62 @@ header nav a:hover {
 }
 
 .btn-pink:hover {
-  background: #ff6b9c;
+  background:  rgb(0, 0, 0);
 }
 
+/* 💖 一鍵加入按鈕（粉紅圓弧亮粉版） */
 .btn-outline {
-  background: #fff;
-  border: 2px solid #ffb6c1;
-  color: #ff6b9c;
-  border-radius: 10px;
-  padding: 8px 14px;
+  background: linear-gradient(135deg, #ff8fab, #ffb6c1); /* 柔粉漸層 */
+  color: white;
+  border: none;
+  border-radius: 25px; /* 圓弧造型 */
+  padding: 8px 16px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(255, 105, 180, 0.25);
 }
 
 .btn-outline:hover {
-  background: #ffe5ec;
+  background: linear-gradient(135deg, #ff6f91, #ffa6c9);
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  transform: translateY(-2px);
+  filter: brightness(1.05);
 }
+
+.btn-outline:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(255, 182, 193, 0.4);
+}
+/* 💖 一鍵加入按鈕（粉紅圓弧亮粉版） */
+.btn-soft {
+  background: linear-gradient(135deg, #ff8fab, #ffb6c1);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(255, 105, 180, 0.25);
+   /* ✅ 新增距離設定 */
+  margin-top: 10px;   /* 與上方元素的距離 */
+  margin-bottom: 10px; /* 與下方元素的距離 */
+  margin: 3px; /* 四周留出一點空氣 */
+}
+
+.btn-soft:hover {
+  background: linear-gradient(135deg, #ff6f91, #ffa6c9);
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.btn-soft:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(255, 182, 193, 0.4);
+}
+
 
 /* ===========================================
    🎀 7️⃣ 建議清單（搜尋下方出現的提示）
@@ -214,46 +261,6 @@ header nav a:hover {
 .suggestions-box div:hover {
   background: #ffe5ec;
 }
-
-/* ===========================================
-   🎀 8️⃣ 推薦項目卡片（系統推薦項目區）
-=========================================== */
-.recommend-box {
-  margin-top: 1rem;
-}
-
-.recommend-box h4 {
-  color: #ff6b9c;
-  margin-bottom: 8px;
-}
-
-.recommend-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 10px;
-}
-
-.recommend-card {
-  border: 1px solid #ffd6e0;
-  border-radius: 12px;
-  padding: 10px;
-  background: #fff8fb;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(255, 143, 171, 0.1);
-  transition: transform 0.15s ease;
-}
-
-.recommend-card:hover {
-  transform: scale(1.05);
-  background: #fff0f5;
-}
-
-.recommend-card .icon {
-  font-size: 20px;
-  display: block;
-  margin-bottom: 6px;
-}
-
 /* ===========================================
    🎀 9️⃣ 紀錄表格（我的碳排紀錄表）
 =========================================== */
@@ -272,7 +279,7 @@ header nav a:hover {
 
 .table-card th {
   background: #ffedf3;
-  color: #ff6b9c;
+  color: #797173;
 }
 
 /* ===========================================
@@ -281,7 +288,7 @@ header nav a:hover {
 .total-display {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ff6b9c;
+  color: #797173;
 }
 
 /* ===========================================
