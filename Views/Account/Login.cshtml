@@ -1,0 +1,112 @@
+@{
+    ViewData["Title"] = "會員登入";
+}
+
+@section HeadContent {
+    <style>
+        .login-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #fff6f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 1.5rem;
+            color: #e56b8c;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: #e56b8c;
+            box-shadow: 0 0 5px rgba(229,107,140,0.4);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 1rem;
+            background: #e56b8c;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-box button:hover {
+            background: #d23a70;
+        }
+
+        .login-box .links {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .login-box .links a {
+            color: #e56b8c;
+            text-decoration: none;
+        }
+
+        .login-box .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+}
+
+@if (Context.Session.GetString("isLogin") == "true")
+{
+    <div class="text-center mt-5">
+        <p>你已登入，可以使用上方選單功能。</p>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-danger">登出</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="login-page">
+        <div class="login-box">
+            <h2>會員登入</h2>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <input type="text" id="UID" name="UID" placeholder="帳號 / Email" required>
+                <input type="password" id="password" name="password" placeholder="密碼" required>
+                <button type="submit">登入</button>
+                <div style="color:red; margin-top:10px;">@ViewBag.Error</div>
+            </form>
+
+            @if (TempData["LoginAlert"] != null)
+            {
+                <div style="color:red; text-align:center; margin-bottom:10px;">
+                    @TempData["LoginAlert"]
+                </div>
+            }
+
+            <div class="links">
+                <p><a href="#">忘記密碼？</a> | <a asp-controller="Account" asp-action="Register">註冊新帳號</a></p>
+            </div>
+        </div>
+    </div>
+}

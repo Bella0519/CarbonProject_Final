@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "登入測試頁";
+}
+<div class="text-center py-5">
+    <h3 style="color:#e56b8c;">這是登入測試頁面</h3>
+    <p>Session 狀態：@Context.Session.GetString("isLogin")</p>
+    <p>使用者名稱：@Context.Session.GetString("userName")</p>
+</div>

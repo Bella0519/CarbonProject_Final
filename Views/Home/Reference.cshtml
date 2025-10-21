@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Refrences";
+}
+@section HeadContent {
+    <script src="https://cdn.tailwindcss.com"></script>    
+    <script>
+        tailwind.config = {
+            corePlugins: {preflight: false},
+            content: ["#tailwind-scope"],
+            important: "#tailwind-scope"
+        }
+    </script>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        #tailwind-scope {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-gradient-hover {
+            transition: background-position 0.3s ease;
+            background: linear-gradient(to right, #6366f1, #3b82f6, #6366f1);
+            background-size: 200% auto;
+        }
+        .bg-gradient-hover:hover {
+            background-position: right center;
+        }
+    </style>
+}
+
+<div id="tailwind-scope" class="max-w-7xl mx-5 mb-5">
+    <h1 class="text-5xl font-bold text-gray-800 text-center m-4">參考公司特色表格</h1>
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">公司 / 平台名稱</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">特色服務主軸</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">操作</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" id="companies-table-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+const companyData = {
+    "Custos": {
+        features: "B2B2E 模式；企業合作+遊戲化獎勵員工減碳。",
+        link: "https://www.custoscarbon.com/zh"
+    },
+    "CoGo": {
+        features: "連結銀行帳戶，自動消費碳足跡計算，個人化自動化追蹤。",
+        link: "https://www.thecommons.earth/"
+    },
+    "Klima & Wren": {
+        features: "個人碳足跡計算 + 碳抵銷服務，APP/網頁跨平台應用。",
+        link: "https://klima.com/"
+    },
+    "Watershed": {
+        features: "企業級 SaaS；雲端、供應鏈數據自動匯入+高質量碳盤查報告。",
+        link: "https://watershed.com/"
+    },
+    "Earth Hero": {
+        features: "以任務卡片設計推動環保習慣，極重 UX 設計。",
+        link: "https://earthhero.org/"
+    }
+};
+function populateTable() {
+    const tbody = document.getElementById('companies-table-body');
+    for (const [name, data] of Object.entries(companyData)) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap"><h3 class="text-base font-medium text-gray-900">${name}</h3></td>
+            <td class="px-6 py-4"><p class="text-sm text-gray-600 leading-relaxed">${data.features}</p></td>
+            <td class="px-6 py-4 text-sm font-medium">
+                <a href="${data.link}" target="_blank" class="text-white font-bold py-2 px-4 rounded-full bg-gradient-hover hover:scale-105 transition-transform duration-300">
+                    前往官網
+                </a>
+            </td>
+        `;
+        tbody.appendChild(row);
+    }
+}
+document.addEventListener('DOMContentLoaded', populateTable);
+</script>

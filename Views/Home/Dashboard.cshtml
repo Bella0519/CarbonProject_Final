@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "個人儀表板";
+}
+<div class="container py-5" style="max-width:900px;">
+    <h2 style="color:#e56b8c;">你好，@Context.Session.GetString("userName") 🌸</h2>
+    <p class="text-muted">這裡是你的碳足跡儀表板，可以查看你的減碳紀錄與目標。</p>
+    <div class="card shadow-sm p-4 mt-3" style="border-radius:15px;">
+        <h5 style="color:#444;">📊 本月碳排總量</h5>
+        <p class="fw-bold" style="color:#e56b8c;font-size:1.5rem;">76.4 kg CO₂e</p>
+        <a asp-controller="Home" asp-action="Calculator" class="btn" style="background-color:#e56b8c;color:white;">重新計算</a>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Custos Carbon</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    @RenderSection("HeadContent", required: false)
+</head>
+
+<body>
+    <!-- 🌸 Header 區域 -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a asp-controller="Home" asp-action="Index">🌿 Custos Carbon</a></h1>
+            <nav class="nav-links">
+                <a asp-controller="Home" asp-action="Index">首頁</a>
+                <a asp-controller="Home" asp-action="About">關於我們</a>
+                <a asp-controller="Home" asp-action="Calculator">碳足跡計算器</a>
+                <a asp-controller="Home" asp-action="Refrences">參考資料</a>
+                <a asp-controller="Account" asp-action="Login" class="login-btn">登入</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 🌿 主內容區 -->
+    <main class="content-wrapper">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- 🤍 Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Custos Carbon | Empowering Sustainable Futures ♻️</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
