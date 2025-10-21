@@ -122,7 +122,6 @@
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/MySqlConnector.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/Pomelo.EntityFrameworkCore.MySql.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/obj/Debug/net9.0/compressed/ey1lmtfvtq-8frabv86yi.gz
-/Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/obj/Debug/net9.0/compressed/wtg8h3xz7l-pnpoa3wznc.gz
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/Humanizer.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/Microsoft.Build.Locator.dll
@@ -216,3 +215,4 @@
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/Users/jennie/Dropbox/Mac (3)/Desktop/CarbonProject_Final/obj/Debug/net9.0/compressed/wtg8h3xz7l-4nqxjz4ijv.gz

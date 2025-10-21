@@ -47,5 +47,16 @@ namespace CarbonProject.Controllers
             _context.SaveChanges();
             return Ok("🧹 已清空所有碳足跡紀錄");
         }
+        [HttpDelete("Delete/{id}")]
+public IActionResult Delete(int id)
+{
+    var record = _context.CarbonRecords.FirstOrDefault(r => r.Id == id);
+    if (record == null)
+        return NotFound($"找不到 ID={id} 的資料");
+    _context.CarbonRecords.Remove(record);
+    _context.SaveChanges();
+    return Ok($"🗑 已刪除 ID={id} 的紀錄");
+}
+
     }
 }
